@@ -7,7 +7,8 @@ from mstat.fstat.base_stat import BaseStat
 class ApiServer(BaseHTTPRequestHandler):
     handlers = {
         "mean" : BaseStat.get_mean,
-        "std"  : BaseStat.get_std
+        "std"  : BaseStat.get_std,
+        "autocorrelation" : BaseStat.get_autocorrelation
     }
 
     def do_POST(self):
