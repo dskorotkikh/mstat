@@ -19,7 +19,7 @@ class ApiServer(BaseHTTPRequestHandler):
             resp = {}
             for method in methods:
                 if method in self.handlers:
-                    resp[method] = self.handlers[method](payload)
+                    resp[method] = self.handlers[method](payload, **methods[method])
                 else:
                     resp[method] = None
             resp = json.dumps(resp)
