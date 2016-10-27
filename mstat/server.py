@@ -2,6 +2,8 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from mstat.fstat.base_stat import BaseStat
+from mstat.fstat.interpolation import Interpolation
+
 from mstat.fstat.extended_stat import ExtendedStat
 
 class ApiServer(BaseHTTPRequestHandler):
@@ -10,6 +12,9 @@ class ApiServer(BaseHTTPRequestHandler):
         "std"  : BaseStat.get_std,
         "autocorrelation" : BaseStat.get_autocorrelation,
         "mnk" : ExtendedStat.get_mnk
+        "lin_interpolation"  : Interpolation.interpolate_linear,
+        "spline_interpolation"  : Interpolation.interpolate_spline,
+        "autocorrelation" : BaseStat.get_autocorrelation
     }
 
     def do_POST(self):
