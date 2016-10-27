@@ -1,17 +1,13 @@
 #!/usr/bin/env python
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
-
-
-from stat.base_stat import get_mean
-from stat.base_stat import get_std
-
+from mstat.fstat.base_stat import BaseStat
 
 
 class ApiServer(BaseHTTPRequestHandler):
     handlers = {
-        "mean" : get_mean,
-        "std"  : get_std
+        "mean" : BaseStat.get_mean,
+        "std"  : BaseStat.get_std
     }
 
     def do_POST(self):
@@ -42,9 +38,8 @@ class ApiServer(BaseHTTPRequestHandler):
         return
 
 
-def run():
-    server_address = ('127.0.0.1', 8081)
+def __main__():
+    server_address = ('0.0.0.0', 9999)
     httpd = HTTPServer(server_address, ApiServer)
     print('running server...')
     httpd.serve_forever()
-run()
