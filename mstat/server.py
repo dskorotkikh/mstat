@@ -2,13 +2,14 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from mstat.fstat.base_stat import BaseStat
-
+from mstat.fstat.extended_stat import ExtendedStat
 
 class ApiServer(BaseHTTPRequestHandler):
     handlers = {
         "mean" : BaseStat.get_mean,
         "std"  : BaseStat.get_std,
-        "autocorrelation" : BaseStat.get_autocorrelation
+        "autocorrelation" : BaseStat.get_autocorrelation,
+        "mnk" : ExtendedStat.get_mnk
     }
 
     def do_POST(self):
