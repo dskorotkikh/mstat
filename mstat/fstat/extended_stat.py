@@ -22,4 +22,7 @@ class ExtendedStat:
         a = numerator / denominator
         b = (summ_y - a * summ_x) / n
 
-        return map(lambda x: a * x + b, xarray)
+        res = []
+        for item in xarray:
+            res.append(a * item + b)
+        return res
