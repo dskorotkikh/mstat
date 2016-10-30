@@ -11,10 +11,10 @@ class ApiServer(BaseHTTPRequestHandler):
         "mean" : BaseStat.get_mean,
         "std"  : BaseStat.get_std,
         "autocorrelation" : BaseStat.get_autocorrelation,
-        "mnk" : ExtendedStat.get_mnk
-        "lin_interpolation"  : Interpolation.interpolate_linear,
-        "spline_interpolation"  : Interpolation.interpolate_spline,
-        "autocorrelation" : BaseStat.get_autocorrelation
+        "mnk" : ExtendedStat.get_mnk,
+        "lin_interpolation" : Interpolation.interpolate_linear,
+        "spline_interpolation" : Interpolation.interpolate_spline,
+        "newton_interpolation" : Interpolation.interpolate_newton
     }
 
     def do_POST(self):
