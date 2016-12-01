@@ -26,12 +26,15 @@ class Interpolation:
 
     @staticmethod
     def interpolate_spline(data, interpoints):
-        return Interpolation.__unpack_data(Interpolation.__interpolate(data, 1, interpoints))
+        result = Interpolation.__unpack_data(Interpolation.__interpolate(data, 1, interpoints))
+        return [round(val, 2) for val in result]
 
     @staticmethod
     def interpolate_linear(data, interpoints):
-        return Interpolation.__unpack_data(Interpolation.__interpolate(data, "linear", interpoints))
+        result = Interpolation.__unpack_data(Interpolation.__interpolate(data, "linear", interpoints))
+        return [round(val, 2) for val in result]
 
     @staticmethod
     def interpolate_newton(data, interpoints):
-        return Interpolation.__unpack_data(Interpolation.__interpolate(data, Interpolation.NEWTON_HEADER, interpoints))
+        result = Interpolation.__unpack_data(Interpolation.__interpolate(data, Interpolation.NEWTON_HEADER, interpoints))
+        return [round(val, 2) for val in result]
