@@ -21,7 +21,7 @@ class ApiServer(BaseHTTPRequestHandler):
         try:
             data_size = int(self.headers['content-length'])
             data = json.loads(self.rfile.read(data_size).decode())
-            payload = [val for val in data["data"] if isinstance(val, int)]
+            payload = [val for val in data["data"] if isinstance(val, int) or isinstance(val, float)]
             methods = data["methods"]
             resp = {}
             for method in methods:
@@ -40,6 +40,7 @@ class ApiServer(BaseHTTPRequestHandler):
         except Exception as e:
             self.send_response(500)
             self.send_header('Content-type', 'text/html')
+            self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
             self.wfile.write(bytes(str(e), "utf8"))
             return
