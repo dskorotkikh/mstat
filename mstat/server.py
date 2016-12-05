@@ -21,7 +21,7 @@ class ApiServer(BaseHTTPRequestHandler):
         try:
             data_size = int(self.headers['content-length'])
             data = json.loads(self.rfile.read(data_size).decode())
-            payload = data["data"]
+            payload = [val for val in data["data"] if isinstance(val, int)]
             methods = data["methods"]
             resp = {}
             for method in methods:
