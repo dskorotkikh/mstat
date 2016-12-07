@@ -33,7 +33,7 @@ class Interpolation:
 
     @staticmethod
     def interpolate_spline(data, interpoints):
-        result = Interpolation.__unpack_data(Interpolation.__interpolate(data, 1, interpoints))
+        result = Interpolation.__unpack_data(Interpolation.__interpolate(data, 3, interpoints))
         return [round(val, 2) for val in result]
 
     @staticmethod
